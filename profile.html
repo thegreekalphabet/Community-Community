@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Community Connect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="app">
+
+  <!-- ══ LEFT NAV ══ -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">C</div>
+      <div class="nav-logo-text">Community <span>Connect</span></div>
+    </div>
+
+        <a href="helpnet.html" class="nav-item ">
+      <span class="nav-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="explore.html" class="nav-item ">
+      <span class="nav-icon">🔍</span>
+      <span>Explore</span>
+    </a>
+    <a href="notifications.html" class="nav-item ">
+      <span class="nav-icon">🔔</span>
+      <span>Alerts</span>
+      <span class="nav-badge">3</span>
+    </a>
+    <a href="messages.html" class="nav-item ">
+      <span class="nav-icon">✉️</span>
+      <span>Messages</span>
+    </a>
+    <a href="karma.html" class="nav-item ">
+      <span class="nav-icon">🌟</span>
+      <span>Karma</span>
+    </a>
+    <a href="profile.html" class="nav-item active">
+      <span class="nav-icon">👤</span>
+      <span>Profile</span>
+    </a>
+    <a href="settings.html" class="nav-item ">
+      <span class="nav-icon">⚙️</span>
+      <span>Settings</span>
+    </a>
+
+    <button class="nav-post-btn" onclick="openModal()">Post Request</button>
+
+    <div class="nav-profile">
+      <div class="avatar" style="background:linear-gradient(135deg,#fecdd3,#ddd6fe);">A</div>
+      <div class="nav-profile-info">
+        <div class="nav-profile-name">Alex Müller</div>
+        <div class="nav-profile-handle">@alex_helps</div>
+      </div>
+      <span class="karma-pill">🌟 340</span>
+    </div>
+  </nav>
+
+  <!-- ══ MAIN FEED ══ -->
+  <main class="feed" id="profile-page">
+    <div class="feed-header">
+      <div class="feed-tabs">
+        <button class="feed-tab active">Profile</button>
+        <button class="feed-tab">Activity</button>
+      </div>
+    </div>
+
+    <section style="padding:20px;">
+      <div style="display:flex;gap:20px;align-items:center;margin-bottom:24px;">
+        <div class="avatar" style="background:linear-gradient(135deg,#fecdd3,#ddd6fe);width:84px;height:84px;font-size:34px;">U</div>
+        <div>
+          <div id="profile-full-name" style="font-size:28px;font-weight:800;">Your Name</div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:6px;">
+            <span id="profile-handle" style="color:var(--muted);font-size:15px;">@your_handle</span>
+            <span style="background:var(--bg3);border-radius:9999px;padding:6px 12px;font-size:13px;color:var(--accent);font-weight:700;">Volunteer</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+        <div style="background:var(--bg2);border-radius:20px;padding:20px;">
+          <div style="font-size:15px;color:var(--muted);margin-bottom:10px;">Karma Score</div>
+          <div id="profile-karma" style="font-size:42px;font-weight:900;color:var(--purple);">0</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:20px;padding:20px;">
+          <div style="font-size:15px;color:var(--muted);margin-bottom:10px;">Role</div>
+          <div id="profile-role" style="font-size:28px;font-weight:800;">Volunteer</div>
+          <div id="profile-email" style="color:var(--muted);margin-top:8px;">your.email@example.com</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg2);border-radius:20px;padding:20px;margin-bottom:24px;">
+        <div style="font-size:18px;font-weight:800;margin-bottom:12px;">About you</div>
+        <div id="profile-bio" style="color:var(--text);line-height:1.75;">Active contributor from Mumbai, helping the community through urgent assistance and volunteer coordination.</div>
+      </div>
+
+      <div style="margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:20px;font-weight:800;">Recent contributions</div>
+        <button style="border:none;background:var(--accent);color:#fff;border-radius:9999px;padding:10px 18px;font-weight:700;">View full history</button>
+      </div>
+      <div style="display:grid;gap:14px;">
+        <div style="background:var(--bg2);border-radius:18px;padding:18px;">
+          <div style="font-weight:700;margin-bottom:6px;">Confirmed help for blood donation</div>
+          <div style="color:var(--muted);font-size:13px;">You helped dispatch donors to Mumbai Blood Bank.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:18px;padding:18px;">
+          <div style="font-weight:700;margin-bottom:6px;">Shelter support coordinated</div>
+          <div style="color:var(--muted);font-size:13px;">Your team organized emergency sleeping kits in Chembur.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══ RIGHT SIDEBAR ══ -->
+  <aside class="sidebar">
+    <div class="sidebar-search">
+      <span style="font-size:16px;color:var(--muted)">🔍</span>
+      <input type="text" placeholder="Search HelpNet" oninput="searchPosts(this.value)"/>
+    </div>
+
+    <!-- Karma card -->
+    <div class="sidebar-box">
+      <div class="sidebar-title">🌟 Your Karma</div>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+        <span style="font-size:36px;font-weight:900;color:var(--purple)">340</span>
+        <span style="font-size:14px;color:var(--muted)">points</span>
+      </div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">Helper · 160 pts to Advocate</div>
+      <div class="karma-bar-wrap">
+        <div class="karma-bar-label">
+          <span style="font-size:12px;color:var(--muted)">Helper (100)</span>
+          <span style="font-size:12px;color:var(--muted)">Advocate (500)</span>
+        </div>
+        <div class="karma-bar"><div class="karma-bar-fill" style="width:60%"></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:14px;">
+        <div style="background:var(--bg3);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:18px;font-weight:800;">12</div>
+          <div style="font-size:11px;color:var(--muted);">Helped</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:18px;font-weight:800;">4.9★</div>
+          <div style="font-size:11px;color:var(--muted);">Avg rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live stats -->
+    <div class="sidebar-box">
+      <div class="sidebar-title">📊 Live Stats</div>
+      <div class="stat-row">
+        <span class="stat-label">🤝 Active helpers</span>
+        <span class="stat-value" id="stat-helpers">2,840</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">✅ Fulfilled today</span>
+        <span class="stat-value" id="stat-fulfilled">98</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">🔴 Critical now</span>
+        <span class="stat-value" id="stat-critical" style="color:#ef4444">3</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">📍 Near you</span>
+        <span class="stat-value" id="stat-nearby">14</span>
+      </div>
+    </div>
+
+    <!-- Trending -->
+    <div class="sidebar-box">
+      <div class="sidebar-title">🔥 Trending</div>
+      <div class="trending-item">
+        <div class="trending-label">Blood · Trending</div>
+        <div class="trending-tag">#BloodDonation</div>
+        <div class="trending-count">1,240 posts</div>
+      </div>
+      <div class="trending-item">
+        <div class="trending-label">Frankfurt · Trending</div>
+        <div class="trending-tag">#FrankfurtHelps</div>
+        <div class="trending-count">834 posts</div>
+      </div>
+      <div class="trending-item">
+        <div class="trending-label">Volunteer · Trending</div>
+        <div class="trending-tag">#WeekendVolunteer</div>
+        <div class="trending-count">412 posts</div>
+      </div>
+    </div>
+
+    <!-- Who to follow -->
+    <div class="sidebar-box">
+      <div class="sidebar-title">Who to follow</div>
+      <div class="who-item">
+        <div class="avatar" style="background:linear-gradient(135deg,#bfdbfe,#ddd6fe);font-size:16px;">S</div>
+        <div class="who-info">
+          <div class="who-name">St. Mary's Hospital ✓</div>
+          <div class="who-handle">@stmarys_ffm</div>
+        </div>
+        <button class="follow-btn">Follow</button>
+      </div>
+      <div class="who-item">
+        <div class="avatar" style="background:linear-gradient(135deg,#dcfce7,#fef9c3);font-size:16px;">T</div>
+        <div class="who-info">
+          <div class="who-name">Frankfurt Tafel</div>
+          <div class="who-handle">@tafel_ffm</div>
+        </div>
+        <button class="follow-btn">Follow</button>
+      </div>
+      <div class="who-item">
+        <div class="avatar" style="background:linear-gradient(135deg,#fee2e2,#fef3c7);font-size:16px;">R</div>
+        <div class="who-info">
+          <div class="who-name">Refugee Aid FFM</div>
+          <div class="who-handle">@refugeeaid_ffm</div>
+        </div>
+        <button class="follow-btn">Follow</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- ══ CREATE POST MODAL ══ -->
+<div class="modal-overlay" id="modal" style="display:none" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-title">Create a Request</div>
+    </div>
+    <div style="padding:16px;">
+      <div style="display:flex;gap:12px;margin-bottom:16px;">
+        <div class="avatar" style="background:linear-gradient(135deg,#fecdd3,#ddd6fe);">A</div>
+        <div style="flex:1;">
+          <textarea id="modal-text" placeholder="Describe what you need, where you are, and when..." rows="4" style="border:none;outline:none;resize:none;font-size:17px;width:100%;color:var(--text);background:transparent;line-height:1.6;"></textarea>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div>
+          <label style="font-size:13px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px;">Category</label>
+          <select id="modal-category" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;outline:none;background:var(--bg);color:var(--text);">
+            <option value="blood">🩸 Blood</option>
+            <option value="medical">💊 Medical</option>
+            <option value="food">🍱 Food</option>
+            <option value="shelter">🏠 Shelter</option>
+            <option value="volunteer">🤝 Volunteer</option>
+            <option value="other">📦 Other</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px;">Location</label>
+          <input id="modal-location" type="text" placeholder="e.g. Frankfurt Mitte" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;outline:none;background:var(--bg);color:var(--text);" />
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <label style="font-size:13px;font-weight:600;color:var(--muted);display:block;margin-bottom:8px;">Severity</label>
+        <div style="display:flex;gap:8px;">
+          <button class="sev-btn standard active" data-sev="standard" onclick="setModalSeverity(this)" style="flex:1;padding:10px;">🟢 Standard<br/><small style="font-weight:400;opacity:0.7;">+10 karma</small></button>
+          <button class="sev-btn urgent" data-sev="urgent" onclick="setModalSeverity(this)" style="flex:1;padding:10px;">🟡 Urgent<br/><small style="font-weight:400;opacity:0.7;">+30 karma</small></button>
+          <button class="sev-btn critical" data-sev="critical" onclick="setModalSeverity(this)" style="flex:1;padding:10px;">🔴 Critical<br/><small style="font-weight:400;opacity:0.7;">+50 karma</small></button>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <label style="font-size:13px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px;">Needed by</label>
+        <input id="modal-expiry" type="datetime-local" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;outline:none;background:var(--bg);color:var(--text);" />
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:10px;padding-top:12px;border-top:1px solid var(--border);">
+        <button onclick="closeModal()" style="padding:10px 20px;border-radius:var(--radius);border:1.5px solid var(--border);background:none;font-size:15px;font-weight:600;color:var(--muted);">Cancel</button>
+        <button onclick="submitModal()" style="padding:10px 28px;border-radius:var(--radius);border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:700;">Post Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "community-connect",
+  "version": "1.0.0",
+  "description": "Community help network application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "setup-db": "node setup-db.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.6.0",
+    "uuid": "^9.0.0"
+  },
+  "keywords": [
+    "community",
+    "help",
+    "network"
+  ],
+  "author": "",
+  "license": "ISC"
+}
